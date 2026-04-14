@@ -1,0 +1,399 @@
+﻿<!--
+    Copyright © 2016 - 2021 Stefan Berg <isbeorn86+NINA@googlemail.com> and the N.I.N.A. contributors
+
+    This file is part of N.I.N.A. - Nighttime Imaging 'N' Astronomy.
+
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at http://mozilla.org/MPL/2.0/.-->
+<ResourceDictionary
+    x:Class="NINA.Plugin.DarksCustoms.FilterOffsetCalculator.FilterOffsetCalculatorTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NINA.Plugin.DarksCustoms.FilterOffsetCalculator"
+    xmlns:mini="clr-namespace:NINA.View.Sequencer.MiniSequencer;assembly=NINA.Sequencer"
+    xmlns:nina="clr-namespace:NINA.View.Sequencer;assembly=NINA.Sequencer"
+    xmlns:ninactrl="clr-namespace:NINA.CustomControlLibrary;assembly=NINA.CustomControlLibrary"
+    xmlns:util="clr-namespace:NINA.Core.Utility;assembly=NINA.Core">
+    <GeometryGroup x:Key="Filter_Offset_SVG">
+        <PathGeometry Figures="M 56.8061,75.9545L 75.6751,75.9545L 75.6751,72.1003L 56.8061,72.1003L 56.8061,75.9545 Z " />
+        <PathGeometry Figures="M 71.8272,75.9601L 75.6815,75.9601L 75.6815,57.0912L 71.8272,57.0912L 71.8272,75.9601 Z " />
+        <PathGeometry Figures="M 71.8541,19.1875L 75.7084,19.1875L 75.7084,0.318535L 71.8541,0.318535L 71.8541,19.1875 Z " />
+        <PathGeometry Figures="M 56.8467,4.19413L 75.6657,4.19413L 75.6657,0.339867L 56.8467,0.339867L 56.8467,4.19413 Z " />
+        <PathGeometry Figures="M 0.0845312,4.20627L 18.9535,4.20627L 18.9535,0.351997L 0.0845312,0.351997L 0.0845312,4.20627 Z " />
+        <PathGeometry Figures="M 0.0575979,19.2515L 3.91186,19.2515L 3.91186,0.38253L 0.0575979,0.38253L 0.0575979,19.2515 Z " />
+        <PathGeometry Figures="M -2.1408e-006,75.9248L 3.85426,75.9248L 3.85426,57.0559L -2.1408e-006,57.0559L -2.1408e-006,75.9248 Z " />
+        <PathGeometry Figures="M 0.0426645,76L 18.9116,76L 18.9116,72.1457L 0.0426645,72.1457L 0.0426645,76 Z " />
+        <PathGeometry Figures="M 38.18,9.2328C 53.9359,9.2328 66.7277,21.8636 66.7277,37.4211C 66.7277,52.9785 53.9359,65.6093 38.18,65.6093C 22.424,65.6093 9.63213,52.9785 9.63213,37.4211C 9.63213,21.8636 22.424,9.2328 38.18,9.2328 Z " />
+        <PathGeometry Figures="M 24.8876,27.5622L 23.8251,27.6455C 23.7417,27.2288 23.5959,26.9372 23.4292,26.7288C 23.1376,26.4372 22.8042,26.2913 22.3876,26.2913C 22.0334,26.2913 21.7417,26.3955 21.4917,26.5622C 21.1584,26.8122 20.8876,27.1663 20.7001,27.6247C 20.5126,28.083 20.4084,28.7497 20.4084,29.6038C 20.6584,29.2288 20.9501,28.958 21.3251,28.7705C 21.7001,28.583 22.0751,28.4788 22.4917,28.4788C 23.2001,28.4788 23.7834,28.7497 24.2834,29.2497C 24.7834,29.7705 25.0334,30.4372 25.0334,31.2497C 25.0334,31.7913 24.9084,32.3122 24.6792,32.7705C 24.4292,33.2288 24.1167,33.583 23.7209,33.833C 23.3042,34.0622 22.8459,34.1872 22.3459,34.1872C 21.4709,34.1872 20.7417,33.8747 20.2001,33.2288C 19.6376,32.583 19.3667,31.5205 19.3667,30.0205C 19.3667,28.3747 19.6584,27.1663 20.2834,26.3955C 20.8042,25.7497 21.5334,25.4163 22.4501,25.4163C 23.1167,25.4163 23.6584,25.6247 24.0959,25.9997C 24.5126,26.3747 24.7834,26.8955 24.8876,27.5622 Z M 20.5751,31.2497C 20.5751,31.6247 20.6376,31.9788 20.8042,32.3122C 20.9501,32.6455 21.1584,32.8955 21.4501,33.0622C 21.7209,33.2288 22.0126,33.3122 22.3251,33.3122C 22.7626,33.3122 23.1376,33.1455 23.4709,32.7913C 23.7834,32.4372 23.9501,31.9372 23.9501,31.3122C 23.9501,30.7288 23.7834,30.2497 23.4709,29.9163C 23.1584,29.583 22.7626,29.3955 22.2834,29.3955C 21.8042,29.3955 21.4084,29.583 21.0751,29.9163C 20.7417,30.2497 20.5751,30.708 20.5751,31.2497 Z " />
+        <PathGeometry Figures="M 38.7041,25.7719L 37.6416,25.7719L 37.6416,19.0427C 37.3916,19.2927 37.0583,19.5427 36.6416,19.7927C 36.2249,20.0427 35.8499,20.2094 35.5374,20.3135L 35.5374,19.2927C 36.1208,19.0427 36.6208,18.7094 37.0791,18.3135C 37.5166,17.9177 37.8291,17.5219 38.0166,17.1469L 38.7041,17.1469L 38.7041,25.7719 Z " />
+        <PathGeometry Figures="M 55.4394,33.2362L 55.4394,34.2571L 49.7519,34.2571C 49.7519,34.0071 49.7936,33.7779 49.8769,33.5279C 50.0227,33.1529 50.2519,32.7571 50.5852,32.3821C 50.8977,32.0071 51.3561,31.5904 51.9602,31.0904C 52.8769,30.3196 53.5019,29.7154 53.8352,29.2571C 54.1686,28.8196 54.3352,28.4029 54.3352,27.9862C 54.3352,27.5696 54.1686,27.2362 53.8769,26.9446C 53.5852,26.6529 53.1894,26.5071 52.7311,26.5071C 52.2102,26.5071 51.7936,26.6737 51.5019,26.9654C 51.1894,27.2779 51.0436,27.6946 51.0436,28.2362L 49.9602,28.1112C 50.0227,27.3196 50.2936,26.6946 50.7936,26.2779C 51.2727,25.8612 51.9186,25.6321 52.7519,25.6321C 53.5644,25.6321 54.2102,25.8612 54.6894,26.3196C 55.1686,26.7779 55.4186,27.3404 55.4186,28.0071C 55.4186,28.3612 55.3352,28.6946 55.2102,29.0279C 55.0644,29.3612 54.8352,29.7154 54.5019,30.0904C 54.1686,30.4654 53.6477,30.9654 52.8977,31.5904C 52.2519,32.1321 51.8352,32.4862 51.6686,32.6737C 51.4811,32.8821 51.3352,33.0696 51.2311,33.2362L 55.4394,33.2362 Z " />
+        <PathGeometry Figures="M 49.7539,49.8196L 50.8164,49.6737C 50.9414,50.2779 51.1289,50.7154 51.4205,50.9654C 51.7122,51.2362 52.0664,51.3612 52.5039,51.3612C 52.983,51.3612 53.3997,51.1946 53.733,50.8612C 54.0664,50.5279 54.2539,50.0904 54.2539,49.5696C 54.2539,49.0904 54.0872,48.6946 53.7747,48.3821C 53.4622,48.0696 53.0664,47.9029 52.5872,47.9029C 52.3789,47.9029 52.1289,47.9446 51.8372,48.0279L 51.9622,47.0904C 52.0247,47.1112 52.0872,47.1112 52.1289,47.1112C 52.5664,47.1112 52.9622,47.0071 53.3372,46.7571C 53.6914,46.5279 53.8789,46.1737 53.8789,45.6737C 53.8789,45.2987 53.733,44.9654 53.483,44.7154C 53.2122,44.4654 52.8789,44.3404 52.4622,44.3404C 52.0455,44.3404 51.7122,44.4862 51.4414,44.7362C 51.1705,44.9862 51.0039,45.3821 50.9205,45.8821L 49.858,45.6946C 49.983,44.9862 50.2747,44.4446 50.733,44.0487C 51.1914,43.6737 51.7539,43.4654 52.4414,43.4654C 52.8997,43.4654 53.3372,43.5696 53.733,43.7779C 54.1289,43.9862 54.4414,44.2571 54.6497,44.5904C 54.858,44.9446 54.9622,45.3196 54.9622,45.6946C 54.9622,46.0696 54.858,46.4237 54.6497,46.7154C 54.4414,47.0279 54.1497,47.2779 53.7747,47.4446C 54.2747,47.5696 54.6705,47.7987 54.9622,48.1737C 55.233,48.5487 55.3789,49.0071 55.3789,49.5487C 55.3789,50.2987 55.0872,50.9446 54.5455,51.4654C 54.0039,51.9862 53.3164,52.2362 52.483,52.2362C 51.733,52.2362 51.108,52.0279 50.608,51.5696C 50.108,51.1321 49.8164,50.5487 49.7539,49.8196 Z " />
+        <PathGeometry Figures="M 37.5966,59.5689L 37.5966,57.5064L 33.8674,57.5064L 33.8674,56.5481L 37.7841,50.9856L 38.6591,50.9856L 38.6591,56.5481L 39.8258,56.5481L 39.8258,57.5064L 38.6591,57.5064L 38.6591,59.5689L 37.5966,59.5689 Z M 37.5966,56.5481L 37.5966,52.6731L 34.9091,56.5481L 37.5966,56.5481 Z " />
+        <PathGeometry Figures="M 19.5523,48.4741L 20.6564,48.37C 20.7398,48.9116 20.9273,49.3283 21.2189,49.5991C 21.5106,49.87 21.8856,49.995 22.3023,49.995C 22.8023,49.995 23.2398,49.8075 23.5939,49.4325C 23.9481,49.0575 24.1356,48.5366 24.1356,47.9116C 24.1356,47.3075 23.9481,46.8283 23.6148,46.4741C 23.2814,46.1408 22.8439,45.9533 22.3023,45.9533C 21.9481,45.9533 21.6356,46.0366 21.3648,46.2033C 21.0939,46.37 20.8856,46.5575 20.7189,46.7866L 19.7398,46.6616L 20.5731,42.245L 24.8439,42.245L 24.8439,43.2658L 21.4064,43.2658L 20.9481,45.5575C 21.4481,45.2241 21.9898,45.0366 22.5731,45.0366C 23.3231,45.0366 23.9481,45.3075 24.4689,45.8075C 24.9689,46.3283 25.2398,46.995 25.2398,47.8075C 25.2398,48.5991 25.0106,49.2658 24.5731,49.8283C 24.0106,50.5366 23.2606,50.87 22.3023,50.87C 21.5106,50.87 20.8856,50.6616 20.3856,50.2241C 19.8856,49.7866 19.6148,49.2033 19.5523,48.4741 Z " />
+    </GeometryGroup>
+    <DataTemplate DataType="{x:Type local:FilterOffsetCalculator}">
+        <nina:SequenceBlockView DataContext="{Binding}">
+            <nina:SequenceBlockView.SequenceItemContent>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="Iterations" />
+                    <TextBox
+                        MinWidth="40"
+                        Margin="5,0,0,0"
+                        Text="{Binding Loops}"
+                        TextAlignment="Right" />
+                    <Button
+                        Width="75"
+                        Margin="10,0,0,0"
+                        Padding="5"
+                        Command="{Binding SetUpFilters}">
+                        <Button.Content>
+                            <TextBlock Foreground="{StaticResource ButtonForegroundBrush}" Text="Settings" />
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </nina:SequenceBlockView.SequenceItemContent>
+            <nina:SequenceBlockView.SequenceItemProgressContent>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="Loop" />
+                    <TextBlock
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{Binding Progress}" />
+                    <TextBlock VerticalAlignment="Center" Text=" / " />
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Loops}" />
+                </StackPanel>
+            </nina:SequenceBlockView.SequenceItemProgressContent>
+        </nina:SequenceBlockView>
+    </DataTemplate>
+    <DataTemplate x:Key="NINA.Plugin.DarksCustoms.Sequencer.SequenceItem.FilterOffsetCalculator_Mini">
+        <mini:MiniSequenceItem>
+            <mini:MiniSequenceItem.SequenceItemContent>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="{Binding Text}" />
+                </StackPanel>
+            </mini:MiniSequenceItem.SequenceItemContent>
+        </mini:MiniSequenceItem>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:FilterSelectionVM}">
+        <StackPanel
+            Width="400"
+            Margin="5"
+            Orientation="Vertical">
+            <DataGrid
+                Margin="5"
+                AutoGenerateColumns="False"
+                CanUserAddRows="False"
+                HeadersVisibility="Column"
+                HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding FilterWheelFilters}"
+                VerticalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn
+                        Width="*"
+                        CanUserSort="False"
+                        Header="Calculate Offset">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding Selected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn
+                        Width="*"
+                        CanUserSort="False"
+                        Header="Position">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Margin="5,0,5,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Filter.Position}"
+                                    TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn
+                        Width="*"
+                        CanUserSort="False"
+                        Header="Filter">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock
+                                    Margin="5,0,5,0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Filter.Name}"
+                                    TextAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:FilterOffsetDialogVM}">
+        <StackPanel
+            Width="400"
+            Margin="5"
+            Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    MinHeight="20"
+                    VerticalAlignment="Center"
+                    Text="Current Offsets" />
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    MinHeight="20"
+                    VerticalAlignment="Center"
+                    Text="New Offsets" />
+                <DataGrid
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HeadersVisibility="Column"
+                    HorizontalScrollBarVisibility="Disabled"
+                    ItemsSource="{Binding OldOffsets}"
+                    VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Position">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Position}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Filter">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Name}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Offset">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding FocusOffset}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    HeadersVisibility="Column"
+                    HorizontalScrollBarVisibility="Disabled"
+                    ItemsSource="{Binding NewOffsets}"
+                    VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Position">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Position}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Filter">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Name}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn
+                            Width="*"
+                            CanUserSort="False"
+                            Header="Offset">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Margin="5,0,5,0"
+                                        VerticalAlignment="Center"
+                                        Text="{Binding FocusOffset}"
+                                        TextAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    MinHeight="20"
+                    VerticalAlignment="Center"
+                    Text="Use Relative Offsets" />
+                <CheckBox
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    MinHeight="20"
+                    IsChecked="{Binding UseRelativeOffsets, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    MinHeight="20"
+                    VerticalAlignment="Center"
+                    Text="Current AutoFocus Filter" />
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Text="{Binding OldDefaultFilter.Name}" />
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    MinHeight="20"
+                    VerticalAlignment="Center"
+                    Text="New AutoFocus Filter" />
+                <ComboBox
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    MinHeight="20"
+                    DisplayMemberPath="Name"
+                    ItemsSource="{Binding OffsetsWithNull}"
+                    SelectedItem="{Binding NewDefaultFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Height="50"
+                    Margin="0,5,0,0"
+                    util:ButtonHelper.DialogResult="True"
+                    Command="{Binding OKCommand}">
+                    <Button.Content>
+                        <TextBlock Foreground="{StaticResource ButtonForegroundBrush}" Text="Accept" />
+                    </Button.Content>
+                </Button>
+                <Button
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Height="25"
+                    Margin="0,5,0,0"
+                    util:ButtonHelper.DialogResult="False"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource BackgroundButton}">
+                    <Button.Content>
+                        <TextBlock Foreground="{StaticResource PrimaryBrush}" Text="Abort" />
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="NINA.Plugin.DarksCustoms.FilterOffsetCalculator.FilterOffsetCalculatorImagingTool_Dockable">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" Text="Iterations" />
+                <TextBox
+                    MinWidth="40"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Text="{Binding Calculator.Loops}"
+                    TextAlignment="Right" />
+            </StackPanel>
+            <ninactrl:AsyncProcessButton
+                x:Name="TheButton"
+                Grid.Column="1"
+                Width="135"
+                Height="25"
+                Margin="5,0,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                ButtonImage="{StaticResource PlaySVG}"
+                CancelButtonImage="{StaticResource StopSVG}"
+                CancelCommand="{Binding CancelExecuteCommand}"
+                Command="{Binding ExecuteCommand}" />
+
+            <ItemsControl
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="0,5,0,0"
+                ItemsSource="{Binding Calculator.Issues}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            Background="{StaticResource NotificationErrorBrush}"
+                            Foreground="{StaticResource NotificationErrorTextBrush}"
+                            Text="{Binding}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ContentPresenter
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Stretch"
+                Content="{Binding FilterSelection}"
+                IsEnabled="{Binding DataContext.ExecuteCommand.Execution.IsCompleted, FallbackValue=True, ElementName=TheButton}" />
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
